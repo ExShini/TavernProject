@@ -15,6 +15,14 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel HorizontalAlignment="Center"
+                Orientation="Vertical"
+                >
+        <TextBlock>Tavern Project</TextBlock>
+        <ListBox x:Name="Visitors"
+        ItemsSource="{Binding VisitorColl}"
+        />
+
+    </StackPanel>
 
 </Window>
