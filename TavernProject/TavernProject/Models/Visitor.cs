@@ -18,8 +18,14 @@ namespace TavernProject.Models
 
     public class Visitor
     {
-        public string Name;
+        public string Name { get; set; }
+        public string RaceName { get { return Race.ToString(); } }
+        
         public VisitorRace Race;
+
+        public int Hunger { get; set; }
+        public int Gold { get; set; }
+        public int Age { get; set; }
 
     }
 }
