@@ -13,7 +13,5 @@ namespace TavernProject.Views
                 {"cat", "camel", "cow", "chameleon", "mouse", "lion", "zebra" }
             .OrderBy(x => x);
         }
-
-
     }
 }

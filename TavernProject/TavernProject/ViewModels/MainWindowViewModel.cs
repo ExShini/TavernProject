@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using TavernProject.Models;
 
 namespace TavernProject.ViewModels
@@ -7,6 +10,8 @@ namespace TavernProject.ViewModels
     {
         public ObservableCollection<Visitor> VisitorColl { get; private set; }
 
+        [ObservableProperty]
+        public Visitor _selectedVisitor;
 
         private readonly TavernSimulator simulator;
 
@@ -30,5 +35,13 @@ namespace TavernProject.ViewModels
                 }
             }
         }
+
+
+        partial void OnSelectedVisitorChanged(Visitor value)
+        {
+            // Логика обновления окна информации должна быть тут!
+        }
+
+
     }
 }

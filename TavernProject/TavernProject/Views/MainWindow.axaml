@@ -22,7 +22,8 @@
 				>
 		<TextBlock HorizontalAlignment="Center">Tavern Project</TextBlock>
 		<ListBox x:Name="Visitors"
-				 ItemsSource="{Binding VisitorColl}">
+				 ItemsSource="{Binding VisitorColl}"
+				 SelectedItem="{Binding SelectedVisitor}">
 
 			<ListBox.ItemTemplate>
 				<DataTemplate>
