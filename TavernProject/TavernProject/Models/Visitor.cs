@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,34 @@ namespace TavernProject.Models
     {
         public string Name { get; set; }
         public string RaceName { get { return Race.ToString(); } }
-        
+
         public VisitorRace Race;
 
         public int Hunger { get; set; }
         public int Gold { get; set; }
         public int Age { get; set; }
 
+
+        public int MaxFoodSpend
+        {
+            get
+            {
+                switch (Race)
+                {
+                    case VisitorRace.Human:
+                        return GameConsts.HumanMaxFoodSpend;
+                    case VisitorRace.Elf:
+                        return GameConsts.ElfMaxFoodSpend;
+                    case VisitorRace.Dwarf:
+                        return GameConsts.DwarfMaxFoodSpend;
+                    case VisitorRace.Orc:
+                        return GameConsts.OrcMaxFoodSpend;
+
+                    default:
+                        Console.Error.WriteLine("Unsupported race: " + Race);
+                        return 0;
+                }
+            }
+        }
     }
 }

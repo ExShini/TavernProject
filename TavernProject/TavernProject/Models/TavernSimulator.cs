@@ -10,6 +10,8 @@ namespace TavernProject.Models
     {
         public List<Visitor> Visitors;
 
+        public int Gold { get; private set; }
+        public int FoodStorage { get; private set; }
 
         public TavernSimulator() 
         {
@@ -18,6 +20,9 @@ namespace TavernProject.Models
 
         private void Initialize()
         {
+            Gold = GameConsts.StartGold;
+            FoodStorage = GameConsts.StartFood;
+
             Visitors = new List<Visitor>()
             {
                 new Visitor()
@@ -62,6 +67,22 @@ namespace TavernProject.Models
             };
         }
 
+
+
+        // выгоняем посетителей из таверны
+        public void ExpelVisitor(Visitor visitorToExpel)
+        {
+            if (visitorToExpel == null)
+                return;
+
+            Visitors.Remove(visitorToExpel);
+        }
+
+        // кормим посетителя
+        public void FeedVisitor(Visitor visitorToFeed)
+        {
+
+        }
 
     }
 }

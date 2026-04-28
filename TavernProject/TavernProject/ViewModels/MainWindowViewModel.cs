@@ -42,6 +42,21 @@ namespace TavernProject.ViewModels
             // Логика обновления окна информации должна быть тут!
         }
 
+        [RelayCommand]
+        private void OnToFeedPress()
+        {
+            simulator.FeedVisitor(_selectedVisitor);
+            SyncTavernVisitors();
+        }
+
+
+        [RelayCommand]
+        private void OnToExplelPress()
+        {
+            simulator.ExpelVisitor(_selectedVisitor);
+            SyncTavernVisitors();
+        }
+
 
     }
 }

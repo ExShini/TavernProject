@@ -21,47 +21,71 @@
 				Spacing="10"
 				>
 		<TextBlock HorizontalAlignment="Center">Tavern Project</TextBlock>
-		<ListBox x:Name="Visitors"
-				 ItemsSource="{Binding VisitorColl}"
-				 SelectedItem="{Binding SelectedVisitor}">
 
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Vertical">
-						<TextBlock Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
-						<TextBlock Text="{Binding RaceName}" HorizontalAlignment="Center"></TextBlock>
+		<StackPanel Orientation="Horizontal">
 
-						<StackPanel Orientation="Horizontal"
-									Spacing="10"
-									HorizontalAlignment="Center">
+			<ListBox x:Name="Visitors"
+					 ItemsSource="{Binding VisitorColl}"
+					 SelectedItem="{Binding SelectedVisitor}">
 
-							<Image Source="avares://TavernProject/Assets/gold.png"
-								   Width="16"
-								   Height="16">
-							</Image>
-							<TextBlock Text="{Binding Gold}" HorizontalAlignment="Center"></TextBlock>
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Vertical">
+							<TextBlock Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
+							<TextBlock Text="{Binding RaceName}" HorizontalAlignment="Center"></TextBlock>
 
-							<Image Source="avares://TavernProject/Assets/food.png"
-								   Width="16"
-								   Height="16">
-							</Image>
-							<TextBlock Text="{Binding Hunger}" HorizontalAlignment="Center"></TextBlock>
+							<StackPanel Orientation="Horizontal"
+										Spacing="10"
+										HorizontalAlignment="Center">
 
-							<Image Source="avares://TavernProject/Assets/clock.png"
-								   Width="16"
-								   Height="16">
-							</Image>
-							<TextBlock Text="{Binding Age}" HorizontalAlignment="Center"></TextBlock>
+								<Image Source="avares://TavernProject/Assets/gold.png"
+									   Width="16"
+									   Height="16">
+								</Image>
+								<TextBlock Text="{Binding Gold}" HorizontalAlignment="Center"></TextBlock>
+
+								<Image Source="avares://TavernProject/Assets/food.png"
+									   Width="16"
+									   Height="16">
+								</Image>
+								<TextBlock Text="{Binding Hunger}" HorizontalAlignment="Center"></TextBlock>
+
+								<Image Source="avares://TavernProject/Assets/clock.png"
+									   Width="16"
+									   Height="16">
+								</Image>
+								<TextBlock Text="{Binding Age}" HorizontalAlignment="Center"></TextBlock>
+
+
+							</StackPanel>
 
 
 						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
 
+			</ListBox>
 
-					</StackPanel>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
+			<StackPanel Width="200">
 
-		</ListBox>
+				<!-- Панель профиля тут --> 
+
+				<Button
+				Margin="2"
+				HorizontalAlignment="Center"
+				Command="{Binding ToFeedPressCommand}"
+				Content="To feed">
+				</Button>
+
+				<Button
+				Margin="2"
+				HorizontalAlignment="Center"
+				Command="{Binding ToExplelPressCommand}"
+				Content="To expel">
+				</Button>
+			</StackPanel>
+
+		</StackPanel>
 
 	</StackPanel>
 
