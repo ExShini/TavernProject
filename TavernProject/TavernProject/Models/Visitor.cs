@@ -28,8 +28,11 @@ namespace TavernProject.Models
         public int Gold { get; set; }
         public int Age { get; set; }
 
+        // флаг, обозначаеющий, сидит ли персонаж за столом
+        public bool IsSiting;
 
-        public int MaxFoodSpend
+
+        public int MaxHunger
         {
             get
             {

@@ -12,6 +12,18 @@ namespace TavernProject.Models
 
         public int Gold { get; private set; }
         public int FoodStorage { get; private set; }
+        public int AllTableNum { get; private set; }
+        public int FreeTableNum { get; private set; }
+
+        public int Day { get; private set; }
+
+
+        // определяет как много еды на ней умещается
+        public int PlateSize { get; private set; }
+        public int PlateCost { get; private set; }
+
+
+
 
         public TavernSimulator() 
         {
@@ -22,6 +34,11 @@ namespace TavernProject.Models
         {
             Gold = GameConsts.StartGold;
             FoodStorage = GameConsts.StartFood;
+            AllTableNum = GameConsts.StartTableNum;
+            FreeTableNum = AllTableNum;
+
+            PlateSize = GameConsts.StartPlateSize;
+            PlateCost = GameConsts.StartPlateCost;
 
             Visitors = new List<Visitor>()
             {
@@ -65,6 +82,8 @@ namespace TavernProject.Models
                     Age = 15,
                 },
             };
+
+
         }
 
 
@@ -81,7 +100,42 @@ namespace TavernProject.Models
         // кормим посетителя
         public void FeedVisitor(Visitor visitorToFeed)
         {
+            if(visitorToFeed == null) 
+                return;
 
+            if(visitorToFeed.IsSiting)
+                return;
+
+            if (FreeTableNum <= 0)
+                return;
+
+            int foodInPlate = PlateSize;
+            foodInPlate = Math.Min(foodInPlate, FoodStorage);
+            foodInPlate = Math.Min(foodInPlate, visitorToFeed.Hunger);
+
+            visitorToFeed.Hunger -= foodInPlate;
+
+            if(visitorToFeed.Hunger <= 0)
+            {
+                Gold += visitorToFeed.Gold;
+                visitorToFeed.Gold = 0;
+            }
+            else
+            {
+                if(visitorToFeed.Gold < PlateCost)
+                {
+                    ExpelVisitor(visitorToFeed);
+                    return;
+                }
+                else
+                {
+                    visitorToFeed.Gold -= PlateCost;
+                    Gold += PlateCost;
+                }
+            }
+
+            FoodStorage -= foodInPlate;
+            FreeTableNum--;
         }
 
     }
