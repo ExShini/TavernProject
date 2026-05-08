@@ -20,5 +20,12 @@ namespace TavernProject.Models
         public const int ElfMaxFoodSpend = 70;
         public const int DwarfMaxFoodSpend = 150;
         public const int OrcMaxFoodSpend = 200;
+
+
+        public const int HangerGrowMin = 2;
+        public const int HangerGrowMax = 8;
+
+
+        public const int StartFoodGrow = 80;
     }
 }

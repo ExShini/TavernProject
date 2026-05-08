@@ -23,6 +23,9 @@ namespace TavernProject.Models
         public int PlateCost { get; private set; }
 
 
+        // произвдительность таверны
+        public int FoodGrow { get; private set; }
+
 
 
         public TavernSimulator() 
@@ -39,6 +42,8 @@ namespace TavernProject.Models
 
             PlateSize = GameConsts.StartPlateSize;
             PlateCost = GameConsts.StartPlateCost;
+
+            FoodGrow = GameConsts.StartFoodGrow;
 
             Visitors = new List<Visitor>()
             {
@@ -119,6 +124,7 @@ namespace TavernProject.Models
             {
                 Gold += visitorToFeed.Gold;
                 visitorToFeed.Gold = 0;
+                ExpelVisitor(visitorToFeed);
             }
             else
             {
@@ -136,6 +142,36 @@ namespace TavernProject.Models
 
             FoodStorage -= foodInPlate;
             FreeTableNum--;
+
+            if(FreeTableNum <= 0)
+            {
+                RunNextDay();
+            }
+        }
+
+
+        public void RunNextDay()
+        {
+            Day++;
+            Random rnd = new Random();
+
+            for (int i = 0; i < Visitors.Count; i++)
+            {
+                var visitor = Visitors[i];
+                visitor.IsSiting = false;
+
+                visitor.Hunger += rnd.Next(GameConsts.HangerGrowMin, GameConsts.HangerGrowMax);
+
+                var maxHunger = visitor.MaxHunger;
+                if(maxHunger <= visitor.Hunger)
+                {
+                    ExpelVisitor(visitor);
+                }
+
+                FoodStorage += FoodGrow;
+            }
+
+
         }
 
     }
