@@ -83,6 +83,13 @@
 				Command="{Binding ToExplelPressCommand}"
 				Content="To expel">
 				</Button>
+
+				<Button
+				Margin="10"
+				HorizontalAlignment="Center"
+				Command="{Binding RunNextDayPressCommand}"
+				Content="Run Next Day">
+				</Button>
 			</StackPanel>
 
 		</StackPanel>

@@ -168,10 +168,9 @@ namespace TavernProject.Models
                     ExpelVisitor(visitor);
                 }
 
-                FoodStorage += FoodGrow;
             }
 
-
+            FoodStorage += FoodGrow;
         }
 
     }

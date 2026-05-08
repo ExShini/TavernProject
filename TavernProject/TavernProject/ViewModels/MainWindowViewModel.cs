@@ -58,5 +58,13 @@ namespace TavernProject.ViewModels
         }
 
 
+        [RelayCommand]
+        private void OnRunNextDayPress()
+        {
+            simulator.RunNextDay();
+            SyncTavernVisitors();
+        }
+
+
     }
 }
