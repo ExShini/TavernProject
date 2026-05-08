@@ -13,7 +13,9 @@ namespace TavernProject.Models
         Human,
         Elf,
         Dwarf,
-        Orc
+        Orc,
+
+        NumOfRaces
     }
 
 

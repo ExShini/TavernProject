@@ -27,6 +27,8 @@ namespace TavernProject.Models
         public int FoodGrow { get; private set; }
 
 
+        private VisitorGenerator _visGen;
+
 
         public TavernSimulator() 
         {
@@ -45,50 +47,13 @@ namespace TavernProject.Models
 
             FoodGrow = GameConsts.StartFoodGrow;
 
-            Visitors = new List<Visitor>()
+            _visGen = new VisitorGenerator();
+            Visitors = new List<Visitor>();
+
+            for (int i = 0; i < GameConsts.StartVisitorNum; i++)
             {
-                new Visitor()
-                {
-                    Name = "Vulf",
-                    Race = VisitorRace.Dwarf,
-                    Gold = 55,
-                    Hunger = 60,
-                    Age = 21,
-                },
-
-                new Visitor()
-                {
-                    Name = "Esabella von Sparrow",
-                    Race = VisitorRace.Elf,
-
-                    Gold = 11,
-                    Hunger = 20,
-                    Age = 450,
-                },
-
-                new Visitor()
-                {
-                    Name = "Boris Govrilov",
-                    Race = VisitorRace.Human,
-
-                    Gold = 89,
-                    Hunger = 16,
-                    Age = 46,
-                },
-
-
-                new Visitor()
-                {
-                    Name = "Vark Zubakov",
-                    Race = VisitorRace.Orc,
-
-                    Gold = 1,
-                    Hunger = 3,
-                    Age = 15,
-                },
-            };
-
-
+                Visitors.Add(_visGen.CreateVisitor());
+            }
         }
 
 
@@ -167,10 +132,11 @@ namespace TavernProject.Models
                 {
                     ExpelVisitor(visitor);
                 }
-
             }
 
             FoodStorage += FoodGrow;
+
+            Visitors.Add(_visGen.CreateVisitor());
         }
 
     }

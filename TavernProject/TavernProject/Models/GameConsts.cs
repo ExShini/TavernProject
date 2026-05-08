@@ -27,5 +27,8 @@ namespace TavernProject.Models
 
 
         public const int StartFoodGrow = 80;
+
+
+        public const int StartVisitorNum = 4;
     }
 }
